@@ -1,0 +1,17 @@
+syntax = "v1"
+
+service file-api {
+	@handler DownloadHandler
+	get /static/:file(DownloadRequest)
+	
+	@handler UploadHandler
+	post /upload returns (UploadResponse)
+}
+
+type UploadResponse {
+	Code int `json:"code"`
+}
+
+type DownloadRequest {
+	File string `path:"file"`
+}
